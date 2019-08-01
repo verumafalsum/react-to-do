@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "./Item.css";
 
 class Item extends Component {
@@ -18,6 +18,10 @@ class Item extends Component {
     this.setState({ checked: checked, viewClass: viewClass });
   };
 
+  deleteToDo = (id) => {
+    this.props.deleteToDo(this.props.id)
+  }
+
   render() {
     let input;
     return (
@@ -31,7 +35,7 @@ class Item extends Component {
           <label>
             #{this.props.id} {this.props.text}
           </label>
-          <button className="destroy"></button>
+          <button className="destroy" onClick={this.deleteToDo}></button>
         </div>
       </div>
     );
