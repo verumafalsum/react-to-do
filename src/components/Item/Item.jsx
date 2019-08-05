@@ -24,8 +24,8 @@ class Item extends Component {
     this.setState({ completed: completed, viewClass: viewClass });
   };
 
-  deleteToDo = (id) => {
-    this.props.deleteToDo(this.props.id)
+  deleteTodo = () => {
+    this.props.deleteTodo(this.props.id)
   }
 
   render() {
@@ -42,7 +42,7 @@ class Item extends Component {
           <label>
             #{this.props.id} {this.props.title}
           </label>
-          <button className="destroy" onClick={this.deleteToDo}></button>
+          <button className="destroy" onClick={this.deleteTodo}></button>
         </div>
       </div>
     );

@@ -3,12 +3,6 @@ import "./ToDoList.css";
 import Item from "../Item";
 
 class ToDoList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
   render() {
     const todos = this.props.todos;
     return (
@@ -20,7 +14,7 @@ class ToDoList extends Component {
             id={todo.id}
             key={todo.id}
             completed={todo.completed}
-            deleteToDo={this.props.deleteToDo}
+            deleteTodo={this.props.deleteTodo}
           />
         ))}
       </div>

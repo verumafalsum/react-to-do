@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import _ from "lodash";
+
 import "./ToDoForm.css";
+
 
 class ToDoForm extends Component {
   constructor(props) {
@@ -10,7 +13,13 @@ class ToDoForm extends Component {
   
   handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      this.props.addToDo(event.target.value);
+      const todo = {
+        userId: 1,
+        id: _.uniqueId(),
+        title: event.target.value,
+        completed: false
+      };
+      this.props.addToDo(todo);
       event.target.value = "";
     }
   }
@@ -28,7 +37,13 @@ class ToDoForm extends Component {
         />
         <button
           onClick={() => {
-            this.props.addToDo(input.value);
+            const todo = {
+              userId: 1,
+              id: _.uniqueId(),
+              title: input.value,
+              completed: false
+            };
+            this.props.addToDo(todo);
             input.value = "";
           }}
         >

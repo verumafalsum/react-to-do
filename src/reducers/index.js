@@ -1,8 +1,8 @@
-export const initialState = {
-    user: "Unknown User",
-}
+import { combineReducers } from "redux";
+import { todosReducer } from "./todos";
+import { userReducer } from "./user";
 
-
-export function rootReducer(state = initialState) {
-    return state;
-}
+export const rootReducer = combineReducers({
+    todos: todosReducer,
+    user: userReducer
+})
