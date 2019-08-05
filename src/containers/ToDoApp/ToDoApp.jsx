@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import ToDoList from "../../components/ToDoList";
 import ToDoForm from "../../components/ToDoForm";
 import Loader from "../../components/Loader";
-import { addTodo, deleteTodo } from "../../actions/TodosActions";
+import { addTodo, deleteTodo, fetchTodo } from "../../actions/TodosActions";
 
 import "./ToDoApp.css";
 
@@ -19,28 +19,15 @@ class ToDoApp extends Component {
   }
 
   // componentDidMount() {
-  //   this.setState({ isLoading: true });
-    
-  //   this.fetchToDo();
-  // }
+  //   // TODO: CREATE ACTION FOR LOADING
+  //   this.setState({ isLoading: false });
 
-  // sleep = (time) => {
-  //     return new Promise(resolve => setTimeout(resolve, time));
-  // }
+  //   const { fetchTodoAction } = this.props;
 
-  // fetchToDo = async () => {
-  //   await this.sleep(2000);
-  //   fetch("https://jsonplaceholder.typicode.com/todos")
-  //     .then(response => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       } else {
-  //         throw new Error("Error! Something went wrong");
-  //       }
-  //     })
-  //     .then(data => this.setState({ todos: data, isLoading: false }))
-  //     .catch(error => console.log(error));
-  // };
+  //   fetchTodoAction("https://jsonplaceholder.typicode.com/todos");
+
+  //   // this.fetchToDo();
+  // }
 
   render() {
     const isLoading = this.state.isLoading;
@@ -68,14 +55,18 @@ const mapStateToProps = store => {
   console.log(store);
   return {
     todos: store.todos
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     addTodoAction: todo => dispatch(addTodo(todo)),
-    deleteTodoAction: id => dispatch(deleteTodo(id))
-  }
-}
+    deleteTodoAction: id => dispatch(deleteTodo(id)),
+    fetchTodoAction: link => dispatch(fetchTodo(link))
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ToDoApp);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ToDoApp);

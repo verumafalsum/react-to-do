@@ -1,20 +1,22 @@
+import * as types from "../types/todos/types"
+
 export function addTodo(todo) {
   return {
-    type: "ADD_TODO",
+    type: types.ADD_TODO,
     payload: todo
   };
 }
 
 export function deleteTodo(id) {
   return {
-    type: "DELETE_TODO",
+    type: types.DELETE_TODO,
     payload: id
   };
 }
 
 export function fetchTodo(link) {
   return {
-    type: "FETCH_TODO",
+    type: types.FETCH_TODO,
     payload: link
   };
 }
