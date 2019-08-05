@@ -16,9 +16,10 @@ class ToDoList extends Component {
         {todos.map(todo => (
           <Item
             className="Item"
-            text={todo.text}
+            title={todo.title}
             id={todo.id}
             key={todo.id}
+            completed={todo.completed}
             deleteToDo={this.props.deleteToDo}
           />
         ))}
