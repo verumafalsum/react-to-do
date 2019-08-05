@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
-import ToDoApp from "./ToDoApp";
+import ToDoApp from "./ToDoApp/ToDoApp";
 
 class App extends Component {
   render() {
+    const { user } = this.props;
     return (
       <div className="App">
-        <h2>Your name is: {this.props.user}</h2>
+        <h2>Your name is: {user.name}</h2>
         <ToDoApp />
       </div>
     );
@@ -15,9 +16,9 @@ class App extends Component {
 }
 
 const mapStateToProps = store => {
-  console.log(store);
+  // console.log(store);
   return {
-    user: store.user,
+    user: store.user
   }
 }
 
