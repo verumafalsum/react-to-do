@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import _ from "lodash";
 import { connect } from "react-redux";
-import ToDoList from "../../components/ToDoList";
+import { bindActionCreators } from "redux";
+import ToDoList from "../ToDoListContainer/ToDoListContainer";
 import ToDoForm from "../../components/ToDoForm";
 import Loader from "../../components/Loader";
-import { addTodo, deleteTodo, fetchTodo } from "../../actions/TodosActions";
+import { addTodo } from "../../actions/TodosActions";
 
 import "./ToDoApp.css";
 
@@ -31,19 +32,15 @@ class ToDoApp extends Component {
 
   render() {
     const isLoading = this.state.isLoading;
-    const { addTodoAction, deleteTodoAction, todos } = this.props;
+    const { addTodo } = this.props;
     return (
       <div className="ToDoApp">
         {isLoading ? (
           <Loader />
         ) : (
           <div>
-            <ToDoForm addToDo={addTodoAction} />
-            <ToDoList
-              className="main"
-              todos={todos.list}
-              deleteTodo={deleteTodoAction}
-            />
+            <ToDoForm addTodo={addTodo} />
+            <ToDoList className="main" />
           </div>
         )}
       </div>
@@ -51,22 +48,10 @@ class ToDoApp extends Component {
   }
 }
 
-const mapStateToProps = store => {
-  console.log(store);
-  return {
-    todos: store.todos
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addTodoAction: todo => dispatch(addTodo(todo)),
-    deleteTodoAction: id => dispatch(deleteTodo(id)),
-    fetchTodoAction: link => dispatch(fetchTodo(link))
-  };
-};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ addTodo }, dispatch);
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(ToDoApp);

@@ -12,14 +12,14 @@ class ToDoForm extends Component {
   }
   
   handleKeyPress = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && event.target.value) {
       const todo = {
         userId: 1,
         id: _.uniqueId(),
         title: event.target.value,
         completed: false
       };
-      this.props.addToDo(todo);
+      this.props.addTodo(todo);
       event.target.value = "";
     }
   }
@@ -37,14 +37,16 @@ class ToDoForm extends Component {
         />
         <button
           onClick={() => {
-            const todo = {
-              userId: 1,
-              id: _.uniqueId(),
-              title: input.value,
-              completed: false
-            };
-            this.props.addToDo(todo);
-            input.value = "";
+            if (input.value) {
+              const todo = {
+                userId: 1,
+                id: _.uniqueId(),
+                title: input.value,
+                completed: false
+              };
+              this.props.addTodo(todo);
+              input.value = "";
+            }
           }}
         >
           Add
