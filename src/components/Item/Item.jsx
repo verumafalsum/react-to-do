@@ -24,12 +24,8 @@ class Item extends Component {
     this.setState({ completed: completed, viewClass: viewClass });
   };
 
-  deleteTodo = () => {
-    this.props.deleteTodo(this.props.id)
-  }
-
   render() {
-    let input;
+    let { deleteTodo, id } = this.props
     return (
       <div className="Item">
         <div className={"view " + this.state.viewClass}>
@@ -42,7 +38,7 @@ class Item extends Component {
           <label>
             #{this.props.id} {this.props.title}
           </label>
-          <button className="destroy" onClick={this.deleteTodo}></button>
+          <button className="destroy" onClick={() => deleteTodo(id)}></button>
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteTodo } from "../../actions/TodosActions";
 import { bindActionCreators } from "redux";
-import Item from "../../components/Item";
+import ItemContainer from "../ItemContainer/ItemContainer";
 
 import "./ToDoListContainer.css";
 
@@ -13,8 +13,7 @@ class ToDoList extends Component {
 
       <div className="ToDoList">
         {todos.list.map(todo => (
-          <Item
-            className="Item"
+          <ItemContainer
             title={todo.title}
             id={todo.id}
             key={todo.id}
