@@ -17,6 +17,18 @@ export function todosReducer(state = initialState, action) {
         ...state,
         list: [...state.list.filter(todo => todo.id !== action.payload)]
       };
+    case types.SWITCH_TODO_COMPLETED:
+      let list = [
+        ...state.list.map(todo =>
+          todo.id === action.payload.id
+            ? {...todo, completed: action.payload.completed}
+            : todo
+        )
+      ];
+      return {
+        ...state,
+        list
+      };
     // case "FETCH_TODO":
     //   fetch("https://jsonplaceholder.typicode.com/todos")
     //     .then(response => {

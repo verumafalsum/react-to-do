@@ -20,3 +20,10 @@ export function fetchTodo(link) {
     payload: link
   };
 }
+
+export function switchTodoCompleted(id, completed) {
+  return {
+    type: types.SWITCH_TODO_COMPLETED,
+    payload: { id, completed }
+  }
+}
