@@ -3,7 +3,7 @@ import _ from "lodash";
 
 import "./ToDoForm.css";
 
-
+// TODO: Refactor it. Create container for component.
 class ToDoForm extends Component {
   constructor(props) {
     super(props);
