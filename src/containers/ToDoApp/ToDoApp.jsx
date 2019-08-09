@@ -1,21 +1,12 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import ToDoListContainer from "../ToDoListContainer/ToDoListContainer";
-import ToDoForm from "../../components/ToDoForm";
+import ToDoFormContainer from "../ToDoFormContainer/ToDoFormContainer";
 import Loader from "../../components/Loader";
-import { addTodo } from "../../actions/TodosActions";
 
 import "./ToDoApp.css";
 
 //TODO: https://jsonplaceholder.typicode.com/
 class ToDoApp extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
   // componentDidMount() {
   //   // TODO: CREATE ACTION FOR LOADING
   //   this.setState({ isLoading: false });
@@ -28,16 +19,15 @@ class ToDoApp extends Component {
   // }
 
   render() {
-    const isLoading = this.state.isLoading;
-    const { addTodo } = this.props;
+    const isLoading = false;
     return (
       <div className="ToDoApp">
         {isLoading ? (
           <Loader />
         ) : (
           <div>
-            <ToDoForm addTodo={addTodo} />
-            <ToDoListContainer className="main" />
+            <ToDoFormContainer />
+            <ToDoListContainer />
           </div>
         )}
       </div>
@@ -45,10 +35,4 @@ class ToDoApp extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ addTodo }, dispatch);
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(ToDoApp);
+export default ToDoApp;
