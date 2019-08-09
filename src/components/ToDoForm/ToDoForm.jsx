@@ -1,20 +1,9 @@
 import React, { Component } from "react";
+
 import "./ToDoForm.css";
 
+// TODO: Refactor it. Create container for component.
 class ToDoForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-  
-  handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      this.props.addToDo(event.target.value);
-      event.target.value = "";
-    }
-  }
-
   render() {
     let input;
     return (
@@ -23,14 +12,11 @@ class ToDoForm extends Component {
           className="new-todo"
           placeholder="What shall we do?"
           type="text"
-          ref={e => input = e}
-          onKeyPress={this.handleKeyPress}
+          ref={e => (input = e)}
+          onKeyPress={this.props.handleKeyPress}
         />
         <button
-          onClick={() => {
-            this.props.addToDo(input.value);
-            input.value = "";
-          }}
+          onClick={() => this.props.onClickAdd(input) }
         >
           Add
         </button>
