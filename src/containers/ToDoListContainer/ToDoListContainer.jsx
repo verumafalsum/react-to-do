@@ -6,7 +6,7 @@ import ItemContainer from "../ItemContainer/ItemContainer";
 
 import "./ToDoListContainer.css";
 
-class ToDoList extends Component {
+class ToDoListContainer extends Component {
   render() {
     const { todos, deleteTodo } = this.props;
     return (
@@ -34,4 +34,4 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators({ deleteTodo }, dispatch);
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ToDoList);
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoListContainer);

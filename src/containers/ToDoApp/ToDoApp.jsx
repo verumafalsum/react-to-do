@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import ToDoList from "../ToDoListContainer/ToDoListContainer";
+import ToDoListContainer from "../ToDoListContainer/ToDoListContainer";
 import ToDoForm from "../../components/ToDoForm";
 import Loader from "../../components/Loader";
 import { addTodo } from "../../actions/TodosActions";
@@ -13,9 +13,7 @@ class ToDoApp extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      todos: []
-    };
+    this.state = {};
   }
 
   // componentDidMount() {
@@ -39,7 +37,7 @@ class ToDoApp extends Component {
         ) : (
           <div>
             <ToDoForm addTodo={addTodo} />
-            <ToDoList className="main" />
+            <ToDoListContainer className="main" />
           </div>
         )}
       </div>
